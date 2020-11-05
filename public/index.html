@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tempInput" type="number" />
+    <button id="sendButton">Invia</button>
+
+
+    <script>
+        const button  = document.getElementById('sendButton')
+        const input = document.getElementById('tempInput');
+
+
+        button.onclick = () => {
+            let temp = input.value;
+            fetch('/setTemp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    temp
+                })
+
+            }).then(res => res.json())
+                            .then(res => {
+                                console.log(res);
+                            })
+        }
+    </script>
+</body>
+</html>

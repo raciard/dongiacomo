@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "express": "^4.17.1",
-    "mqtt": "^4.2.4"
+    "mqtt": "^4.2.4",
+    "socket.io": "^3.0.4"
+  },
+  "scripts": {
+    "start": "node main.js"
   }
 }

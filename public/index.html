@@ -3,33 +3,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="tempInput" type="number" />
-    <button id="sendButton">Invia</button>
+    <div class="container">
+        <div>
+        <h3 style="display: inline">Temperatura desiderata: </h3>
+        <input id="tempInput" type="number" />
+        <button id="sendButton" class="mybutton">Imposta</button>
+        </div>
 
+        <h3>Temperatura ambiente: <span id="temp"><span style="color: red;">In attesa...</span></span></h3>
+        
 
-    <script>
-        const button  = document.getElementById('sendButton')
-        const input = document.getElementById('tempInput');
-
-
-        button.onclick = () => {
-            let temp = input.value;
-            fetch('/setTemp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    temp
-                })
-
-            }).then(res => res.json())
-                            .then(res => {
-                                console.log(res);
-                            })
-        }
-    </script>
+        <h3>Interruttore:</h3>
+        <div><button class="mybutton" onclick="sendSwitch(true)">ON</button> <button class="mybutton" onclick="sendSwitch(false)">OFF</button></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+        <script src="/index.js"></script>
+    </div>
 </body>
 </html>

@@ -3,7 +3,7 @@ const express = require('express');
 const app = express()
 const http = require('http').createServer(app);
 var io = require('socket.io')(http);
-const port = 80
+const port = process.env.PORT || 5000
 
 const client = mqtt.connect('mqtt://savesrl.ddns.net')
 
